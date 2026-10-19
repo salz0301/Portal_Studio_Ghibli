@@ -1,0 +1,131 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Explora las películas de Studio Ghibli.">
+    <title>Ghibli World | Catálogo de películas</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="js/app.js" defer></script>
+</head>
+<body>
+    <header class="hero">
+        <nav class="navbar">
+            <a class="logo" href="#" aria-label="Inicio de Ghibli World">
+                <span class="logo-icon">✿</span> Ghibli World
+            </a>
+            <span class="nav-label">Un mundo de historias</span>
+        </nav>
+
+        <div class="hero-content">
+            <p class="eyebrow">ANIMACIÓN · FANTASÍA · AVENTURA</p>
+            <h1>Historias que<br>hacen volar la imaginación.</h1>
+            <p class="hero-description">
+                Descubre las películas de Studio Ghibli y explora
+                los mundos que las hacen inolvidables.
+            </p>
+            <a class="hero-button" href="#catalogo">Explorar películas ↓</a>
+        </div>
+        <div class="hero-decoration" aria-hidden="true">✦</div>
+    </header>
+
+    <main class="container" id="catalogo">
+        <section class="section-heading">
+            <div>
+                <p class="eyebrow">NUESTRO CATÁLOGO</p>
+                <h2>Un universo por descubrir</h2>
+                <p class="section-description">
+                    Encuentra tu próxima película favorita.
+                </p>
+            </div>
+            <span class="movie-count" id="movie-count">Cargando...</span>
+        </section>
+
+        <section class="filters" aria-label="Buscar películas">
+            <div class="search-box">
+                <label for="search-input">Buscar película</label>
+                <input
+                    type="search"
+                    id="search-input"
+                    placeholder="Escribe un título..."
+                >
+            </div>
+
+            <div class="director-box">
+                <label for="director-filter">Filtrar por director</label>
+                <select id="director-filter">
+                    <option value="">Todos los directores</option>
+                </select>
+            </div>
+        </section>
+
+        <p id="status-message" class="status-message" role="status">
+            Cargando películas desde la API...
+        </p>
+
+        <section id="movie-list" class="movie-grid"
+            aria-label="Listado de películas">
+        </section>
+
+        <section id="empty-state" class="empty-state" hidden>
+            <span>✧</span>
+            <h3>No encontramos películas</h3>
+            <p>Prueba con otro título o selecciona otro director.</p>
+        </section>
+
+        <section id="error-state" class="error-state" hidden>
+            <h3>No pudimos cargar las películas</h3>
+            <p>
+                Comprueba tu conexión a Internet e inténtalo de nuevo.
+                La API podría estar temporalmente fuera de servicio.
+            </p>
+            <button id="retry-button" class="primary-button">
+                Volver a intentar
+            </button>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <a class="logo footer-logo" href="#">✿ Ghibli World</a>
+        <p>Proyecto académico de consumo de una API pública.</p>
+        <p>
+            Datos de películas proporcionados por
+            <a href="https://ghibliapi.dev/" target="_blank"
+                rel="noopener noreferrer">Studio Ghibli API</a>.
+        </p>
+    </footer>
+
+    <dialog id="movie-dialog" class="movie-dialog">
+        <button id="close-dialog" class="close-button"
+            aria-label="Cerrar detalles">×</button>
+
+        <div class="dialog-content">
+            <p class="eyebrow">DETALLES DE LA PELÍCULA</p>
+            <h2 id="dialog-title">Título</h2>
+            <p id="dialog-original-title" class="original-title"></p>
+
+            <div class="detail-tags">
+                <span id="dialog-year"></span>
+                <span id="dialog-duration"></span>
+                <span id="dialog-score"></span>
+            </div>
+
+            <div class="detail-section">
+                <h3>Sinopsis</h3>
+                <p id="dialog-description"></p>
+            </div>
+
+            <div class="detail-section">
+                <h3>Director</h3>
+                <p id="dialog-director"></p>
+            </div>
+
+            <div class="detail-section">
+                <h3>Productor</h3>
+                <p id="dialog-producer"></p>
+            </div>
+        </div>
+    </dialog>
+</body>
+</html>
